@@ -35,10 +35,10 @@ function parseMidi(txt) {
 	for (var i = 0; i < txt.length; ++i)
 	{
 	    bytes.push(txt.charCodeAt(i));
-	    document.getElementById("main").innerHTML += txt.charCodeAt(i).toString(16);
-	    if (i % 40 == 0){
-	    	document.getElementById("main").innerHTML += "</br>";
-	    }
+	    // document.getElementById("main").innerHTML += txt.charCodeAt(i).toString(16);
+	    // if (i % 40 == 0){
+	    // 	document.getElementById("main").innerHTML += "</br>";
+	    // }
 	}
 	if(fileIsMidi(bytes)){
 		parseHeader(bytes);
