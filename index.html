@@ -3,20 +3,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script src="jquery-1.11.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="midi-parse.js"></script>
 <script language="javascript" type="text/javascript">
   
 </script>
 </head>
-<body>
-<center>
-	<h1>This a script that parses midi files into text files for CS275a.</h1>
-	Upload a midi file:
-	<input type="file" id="files"></input>
-	</br></br>
-	<button id="upload">Upload file</button>
-
-</center>
+<body onload="checkFileAPI();">
+    <div id="container">    
+        <input type="file" onchange='readText(this)' />
+        <br/>
+        <hr/>   
+        <h3>Contents of the Text file:</h3>
+        <div id="main">
+            ...
+        </div>
+    </div>
 </body>
 </html>
