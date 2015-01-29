@@ -4,6 +4,7 @@ var readIndex = 0;
 var ticksPerQuarter = 0;
 var bytes = [];
 var runningStatus;
+var lastNoteVal = 0;
 function checkFileAPI() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         reader = new FileReader();
@@ -150,6 +151,8 @@ function parseTime(){
 	if (bytes[readIndex] == 0x0){	
 		
 	}
+	var waitTicks = bytes[readIndex];
+	waitTicks = (waitTicks << 1) >> 1; // cut off left most bit
 	if(bytes[readIndex] >> 7 == 1){
 		readIndex + 1;
 		parseTime();
@@ -204,6 +207,7 @@ function parseEvent(){
 		handleNoteOff();
 		return;
 	}
+	//running status if you reach here
 
 }
 
