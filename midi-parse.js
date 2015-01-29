@@ -1,14 +1,5 @@
 var reader; //GLOBAL File Reader object
 var resultString;
-function checkFileAPI() {
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-        reader = new FileReader();
-        return true; 
-    } else {
-        alert('The File APIs are not fully supported by your browser. Fallback required.');
-        return false;
-    }
-}
 
 /**
  * read text input
@@ -55,6 +46,8 @@ function parseRemaining(bytes){
 function printGuido(){
 	document.getElementById("guido").innerHTML = resultString;
 }
+
+
 
 
 
