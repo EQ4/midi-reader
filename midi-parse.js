@@ -1,4 +1,5 @@
 var reader; //GLOBAL File Reader object
+var resultString;
 function checkFileAPI() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         reader = new FileReader();
@@ -17,7 +18,7 @@ function readText(filePath) {
     if(filePath.files && filePath.files[0]) {           
         reader.onload = function (e) {
             output = e.target.result;
-            displayContents(output);
+            parseMidi(output);
         };
         reader.readAsBinaryString(filePath.files[0]);
     }
@@ -27,16 +28,49 @@ function readText(filePath) {
 /**
  * display content using a basic HTML replacement
  */
-function displayContents(txt) {
+function parseMidi(txt) {
 	var bytes = [];
 
 	for (var i = 0; i < txt.length; ++i)
 	{
-	    bytes.push(txt.charCodeAt(i));
+	    bytes.push(txt.charCodeAt(i).toString(16));
+	    document.getElementById("main").innerHTML += txt.charCodeAt(i).toString(16);
+	    if (i % 40 == 0){
+	    	document.getElementById("main").innerHTML += "</br>";
+	    }
 	}
+	parseHeader(bytes);
+	parseRemaining(bytes)
+	printGuido();
 
-	alert(bytes); // 72,0,101,0,108,0,108,0,111,0
-
-    // var el = document.getElementById('main'); 
-    // el.innerHTML = txt; //display output in DOM
 } 
+
+function parseHeader(bytes){
+
+}
+function parseRemaining(bytes){
+
+}
+
+function printGuido(){
+	document.getElementById("guido").innerHTML = resultString;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
